@@ -1,227 +1,106 @@
-# Awesome-Virtual-Private-Cloud-Networking
+# Awesome Virtual Private Cloud (VPC) & Zero-Trust Mesh Networking Ecosystem
 
-## Top Virtual Private Cloud Networking Ecosystem
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> A curated list of **Virtual Private Cloud (VPC) Networking SaaS platforms**, **Zero-Trust Overlay Mesh VPNs**, and **Open-Source Software-Defined Networking (SDN) solutions**.
 
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on Zero-Trust Overlay Networks, Mesh VPNs & Cloud-Scale Private Networking*  
+*Connect servers, containers, edge devices, and remote workers seamlessly across multi-cloud and hybrid infrastructure using WireGuard, eBPF, and Zero Trust Network Access (ZTNA).*
 
 **Last updated: October 2026**
 
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Virtual Private Cloud Networking**. These tools create encrypted overlay networks that connect devices, servers, containers, and users across cloud, on-premises, and edge environments — providing VPC-like isolation without the complexity of traditional networking.
-
-
-
-**Examples** include Azure Virtual Network, Amazon VPC, Google Cloud VPC, Tailscale, ZeroTier, Netmaker, NetBird, Pritunl, Cloudflare Magic WAN, and Perimeter 81 (the category leaders).
-
-
-
-**Open-source emphasis**: Zero-trust overlay networking is one of the strongest open-source domains. **Netmaker**, **NetBird**, **Karadul**, and **Headscale** provide production-grade WireGuard-based alternatives to commercial mesh VPNs, with **Netmaker** explicitly positioning itself as "an AWS VPC for arbitrary computers" . This section is heavily expanded.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
+---
 
 ## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
+- [Market Overview & Ecosystem Structure](#market-overview--ecosystem-structure)
+- [SaaS & Managed VPC Platforms](#saas--managed-vpc-platforms)
 - [Open-Source GitHub Projects](#open-source-github-projects)
-
+- [Architecture Comparison & Selection Framework](#architecture-comparison--selection-framework)
 - [How to Contribute](#how-to-contribute)
-
 - [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[Azure Virtual Network](https://azure.microsoft.com/en-us/products/virtual-network/)**  
-
-  Microsoft's foundational VPC service providing isolated network segments in Azure with subnets, NSGs, route tables, and peering. Native integration with Azure services and hybrid connectivity via VPN Gateway and ExpressRoute.
-
-
-
-- **[Amazon VPC](https://aws.amazon.com/vpc/)**  
-
-  AWS's virtual network service with full control over IP addressing, subnets, route tables, and gateways. The industry standard for cloud VPC architecture with extensive third-party tooling.
-
-
-
-- **[Google Cloud VPC](https://cloud.google.com/vpc)**  
-
-  GCP's global VPC with automatic subnet creation, global routing, and native integration with Google services. Supports shared VPC for multi-project organizations.
-
-
-
-- **[Tailscale](https://tailscale.com/)**  
-
-  The easiest WireGuard-based mesh VPN with a proprietary SaaS control plane . Excellent NAT traversal, MagicDNS, ACLs, and seamless client apps on every platform. **The clients are open source**, but the coordination server is proprietary — meaning Tailscale sees your device metadata and network topology even if it never sees your traffic . Free tier for personal use with device limits.
-
-
-
-- **[ZeroTier](https://www.zerotier.com/)**  
-
-  Mature mesh networking platform with custom protocol (not WireGuard) and strong NAT traversal . **The client and core protocol remain open source**, but the network controller moved to a commercial, source-available license . True self-hosting requires third-party controller replacements like ztncui or ZTNET. Free tier reduced to 10 devices and 1 network .
-
-
-
-- **[Netmaker SaaS](https://www.netmaker.io/)**  
-
-  Managed cloud offering of the open-source Netmaker platform. Enterprise-grade Zero Trust networking with automatic scaling, redundancy, and managed security configurations .
-
-
-
-- **[Pritunl](https://pritunl.com/)**  
-
-  Open-source (with paid Enterprise tier) VPN server with web-based admin console supporting both OpenVPN and WireGuard backends . Free Community Edition with unlimited users and devices. Enterprise tier adds HA clustering, advanced monitoring, and priority support.
-
-
-
-- **[Cloudflare Magic WAN](https://www.cloudflare.com/)**  
-
-  Enterprise WAN-as-a-service with Zero Trust integration, connecting branch offices and data centers through Cloudflare's global network.
-
-
-
-- **[Perimeter 81](https://www.perimeter81.com/)**  
-
-  Zero Trust Network Access (ZTNA) platform (now Check Point) with cloud-based private networking and secure remote access.
-
-
-
-## Open-Source GitHub Projects
-
-
-
-- **[Netmaker](https://github.com/gravitl/netmaker)**  
-
-  **The leading open-source WireGuard-based Zero Trust networking platform** for connecting devices, servers, containers, and users across any environment . Creates flat, encrypted overlay networks where every node is "next door" regardless of physical location. **Uses kernel WireGuard for superior performance** compared to userspace alternatives . Features gateways for traffic relaying, security/access policies with IDP integration (Google, Microsoft Entra ID, Okta), egress routing by domain or IP range, and DNS service with domain-specific rules . **Self-hostable for complete control** of network traffic . Three client types: Netclient (headless agent for servers/IoT), pure WireGuard endpoints, and Netmaker Desktop/Mobile .
-
-
-
-- **[NetBird](https://github.com/netbirdio/netbird)**  
-
-  **Open-source Zero Trust networking platform** building secure, encrypted peer-to-peer overlay networks using WireGuard . Functions as a software-defined perimeter connecting distributed infrastructure while hiding resources from the public internet . **Integrates with external identity providers** for granular access control and identity-based segmentation . Organizes infrastructure into **logical containers** that map environments like cloud VPCs to sets of routing peers . Raised €8.5M Series A in January 2026 to expand as the primary European alternative to US-based ZTNA vendors . Ships with a self-hosted admin dashboard out of the box — the strongest pick for teams wanting managed-like experience with full data ownership .
-
-
-
-- **[Headscale](https://github.com/juanfont/headscale)**  
-
-  **Open-source, self-hosted implementation of the Tailscale control server** with 44K+ GitHub stars . Allows using Tailscale's excellent open-source clients unmodified against your own coordination server . **The best combination of speed, security, and genuine vendor independence for most self-hosters** . Requires PostgreSQL and separate service management — more operational overhead than Netmaker or NetBird .
-
-
-
-- **[Karadul](https://github.com/ersinkoc/karadul)**  
-
-  **Self-hosted, zero-dependency mesh VPN system** written in Go — described as "Tailscale + Headscale in one binary, built from scratch" . **Only Go stdlib dependencies** — no PostgreSQL, MongoDB, or external services . Single binary serves all roles: node, coordination server, and DERP relay . WireGuard-compatible protocol using Noise IK handshake, X25519, ChaCha20-Poly1305, and BLAKE2s . **MIT licensed** with MagicDNS, ACL support, STUN + hole punching, and exit nodes built in . Mobile support planned. **The lightest-weight fully self-hosted option** for teams wanting zero operational dependencies.
-
-
-
-- **[LXD](https://github.com/lxc/lxd)**  
-
-  **Unified platform for managing system containers and VMs** through a single REST API and CLI . Creates **isolated virtual overlay networks with distributed routing, ACLs, and peering** across cluster members . Runs unprivileged containers with per-instance UID/GID mappings, seccomp filters, and AppArmor profiles for kernel-level isolation . Supports multiple storage backends (directory, Btrfs, LVM, ZFS, Ceph, LINSTOR, TrueNAS) . **Best for teams building private cloud infrastructure with VPC-like isolation**.
-
-
-
-- **[Incus](https://github.com/lxc/incus)**  
-
-  **Unified orchestration platform** for system containers, OCI application containers, and VMs through a single control plane . Brings together cluster infrastructure management, secure multi-tenancy, software-defined networking, and pluggable storage . **Creates logical networks using OVN software-defined networking** enabling private cloud and multi-tenant environments with NAT-based uplink access . **The most comprehensive open-source private cloud networking foundation** for teams wanting full-stack infrastructure orchestration.
-
-
-
-- **[Open vSwitch](https://github.com/openvswitch/ovs)**  
-
-  **Production-quality, multilayer virtual switch** — the foundation for software-defined networking in cloud and container environments . Used by OpenStack, Kubernetes CNI plugins, and countless SDN projects. Supports OpenFlow, VXLAN, GRE, and other tunneling protocols. **The de facto standard for virtual switching** in open-source cloud infrastructure .
-
-
-
-- **[Ferrumgate](https://github.com/ferrumgate)**  
-
-  Open-source **Zero Trust Network Access platform** using software-defined perimeter . Provides secure remote access, cloud security, privileged access management, identity and access management, and endpoint security through Zero Trust virtual networks . Supports multiple SSO methods, deployment without network modifications, and integration with IP/FQDN intelligence providers .
-
-
-
-- **[Pritunl Zero](https://github.com/pritunl/pritunl-zero)**  
-
-  Open-source **BeyondCorp server** providing zero-trust security for privileged SSH and web application access . Compatible with OneLogin, Okta, Google, Azure, and Auth0 for SSO . Role-based access policies, browser-based access without VPN clients, and quick configuration without network modifications . **Serves as a free alternative to Gravitational Teleport, ScaleFT, and Cloudflare Access** with additional SSH support .
-
-
-
-- **[Shurli](https://github.com/shurlinet/shurli)**  
-
-  **Self-hosted tunnels and private WireGuard mesh** for reaching machines with no public address . Deploy your own relay on any VPS with one script — "your relay, your rules, no third party controls your network" . Features DCUtR hole-punching for direct peer-to-peer when possible, proxy for any TCP service (SSH, RDP, Jellyfin, Ollama), file sending, and folder sharing . **MIT licensed** with invite-code-based onboarding and systemd service installation on Linux . **The simplest path to NAT traversal for individual developers and small teams**.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **Superphenix** — Open-source IaaS/PaaS/SaaS platform based on Kubernetes for building your own cloud wherever you want . Includes VPCs, NAT gateways, BGP, load balancers, QoS, and security groups as first-class workloads . **Apache 2.0 licensed** with GitOps-native lifecycle management .
-
-- **Paraglider** — Linux Foundation project simplifying single-cloud and multi-cloud network creation and management . Provides high-level constructs for connectivity, security, and key network functions with semantically meaningful names instead of IP-based constructs . **The unified cross-cloud control plane** backed by Microsoft, Google, IBM, and UC Berkeley .
-
-- **OpenVPN** — Veteran open-source VPN with TCP fallback for restrictive firewalls . Slower than WireGuard due to userspace implementation and larger codebase . **Still earns its place for legacy compatibility** and environments where UDP is blocked.
-
-- **WireGuard** — The foundational open-source VPN protocol underlying most modern mesh solutions. Kernel-level performance, modern cryptography, and minimal codebase. **The building block for Netmaker, NetBird, Tailscale, Headscale, and Karadul** .
-
-- **frp** — Fast reverse proxy for exposing local servers behind NAT or firewall to the internet . **109K+ GitHub stars** — the most popular tunneling tool for self-hosters.
-
-- **rathole** — Lightweight, high-performance reverse proxy for NAT traversal in Rust . Alternative to frp and ngrok.
-
-
-
-**Frameworks for building custom VPC networking solutions**: Choose based on operational capacity and requirements. **Netmaker** for kernel WireGuard performance with flexible network patterns and full self-hosting . **NetBird** for the strongest self-hosted admin dashboard and European sovereign alternative . **Headscale** for using Tailscale's excellent clients with your own control plane . **Karadul** for zero-dependency, single-binary simplicity with no database requirements . **LXD** or **Incus** for full private cloud infrastructure with VPC-like isolation and container/VM orchestration . **Shurli** for the simplest NAT traversal path with invite-based onboarding . Note that true cloud-scale VPC networking with global anycast, managed peering, and enterprise SLAs remains primarily commercial territory; open-source stacks provide strong WireGuard-based mesh networking, container network isolation, and cross-cloud abstractions that require integration for complete private cloud infrastructure.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- VPC networking tools handle sensitive network traffic and access control. Self-hosted solutions require proper security hardening, key management, and backup procedures for coordination server state. **Losing the state of a self-hosted control plane can lock every device out of the network at once** .
-
-- **ZeroTier's network controller is no longer fully open source** — true self-hosting requires third-party replacements like ztncui or ZTNET . **Tailscale's coordination server is proprietary SaaS** and cannot be self-hosted; using Headscale provides the self-hosted alternative .
-
-- **Re-check each project's license page annually** — self-hosted networking tools have shifted licenses more than once in recent years .
-
-- The open-source ecosystem provides strong WireGuard-based mesh networking, container network isolation, and cross-cloud abstractions, but enterprise support, global anycast networks, and managed SLAs remain primarily commercial offerings.
-
-
 
 ---
 
+## Market Overview & Ecosystem Structure
 
+> [!NOTE]
+> **Market Size & Dynamics**: The **Virtual Private Cloud (VPC)** and **Cloud Networking** market is valued at approximately **$35 Billion – $68 Billion** (projected to reach **$85B+ by 2035** with a CAGR of **12%–22%**). 
+>
+> The market is **highly concentrated at the infrastructure layer** (dominated by cloud giants AWS, Azure, and GCP) but **highly fragmented in the Zero-Trust mesh VPN and overlay layer** (where specialized vendors like Tailscale, Cloudflare, NetBird, and Netmaker compete alongside open-source self-hosted solutions).
 
-**Made for network engineers, platform teams, DevOps practitioners, and infrastructure architects.**  
+---
 
-Let's make virtual private cloud networking more open, transparent, and vendor-independent.
+## SaaS & Managed VPC Platforms
+
+The table below lists top commercial SaaS & managed VPC networking solutions, ranked by parent company size (valuation / revenue / market cap, descending):
+
+| Platform | Starting Paid Price | Free Tier / Trial Limit | Company Size / Valuation | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Google Cloud VPC](https://cloud.google.com/vpc)** | $0.01/GB outbound data transfer (VPC core is $0 base) | $300 free credits (90 days) + Always Free tier compute/storage | **$4.1 Trillion** market cap (Alphabet) | GCP's global virtual network with auto-subnets, global routing, and shared VPCs for enterprise projects. |
+| **[Azure Virtual Network](https://azure.microsoft.com/en-us/products/virtual-network/)** | $0.035/hr per VNet Gateway ($0 base for VNet creation) | $200 free credits (30 days) + 12 months free popular services | **$3.7 Trillion** market cap (Microsoft) | Microsoft's isolated VPC networking with NSGs, subnets, route tables, and ExpressRoute hybrid links. |
+| **[Amazon VPC](https://aws.amazon.com/vpc/)** | $0.045/hr per NAT Gateway + $0.005/hr per public IP ($0 base VPC) | 750 hrs/month EC2 free tier + 100 GB/month data transfer out | **$2.7 Trillion** market cap (Amazon) | AWS's foundational virtual cloud network with complete control over IP routing, subnets, and gateways. |
+| **[Cloudflare Magic WAN](https://www.cloudflare.com/)** | $5/user/month (Cloudflare Zero Trust starter) | Free tier for Cloudflare Zero Trust up to 50 users | **$124.6 Billion** market cap (NYSE: NET) | Enterprise WAN-as-a-Service connecting branch offices and VPCs through Cloudflare's global edge network. |
+| **[Perimeter 81](https://www.perimeter81.com/)** | $8/user/month (Essential plan, 5 seat min) | 30-day money-back guarantee (no perpetual free tier) | **$490 Million** (Acquired by Check Point) | Zero Trust Network Access (ZTNA) platform with SaaS admin console and encrypted cloud gateways. |
+| **[Tailscale](https://tailscale.com/)** | $8/user/month (Starter plan) | Free forever for up to 6 users, unlimited devices per user | **$1.5 Billion** valuation (Private VC) | Popular WireGuard-based mesh VPN with SaaS coordination plane, MagicDNS, and seamless client apps. |
+| **[ZeroTier](https://www.zerotier.com/)** | $5/month (Professional plan, up to 25 devices) | Free forever for up to 10 devices & 1 network admin | **$24.2 Million** total raised (Private) | Ethernet-layer mesh networking platform connecting devices across subnets with custom software-defined switches. |
+| **[Netmaker SaaS](https://www.netmaker.io/)** | $2/active connection/month (Community SaaS) | 14-day free cloud trial (Self-hosted edition is 100% free) | **$2 Million** ARR (YC-backed) | Managed high-performance kernel WireGuard mesh VPN for enterprise multi-cloud container networking. |
+| **[Pritunl](https://pritunl.com/)** | $10/month per host (Premium edition) | Free forever Community Edition (Single server instance, unlimited clients) | **Private Bootstrapped** | Enterprise VPN server supporting OpenVPN and WireGuard with web admin console and SSO integrations. |
+
+---
+
+## Open-Source GitHub Projects
+
+The top open-source VPC networking, mesh VPN, and overlay infrastructure repositories, sorted by **GitHub Star Count (descending)**:
+
+| Project | GitHub Stars | License | Description |
+| :--- | :--- | :--- | :--- |
+| **[frp](https://github.com/fatedier/frp)** | [![frp Stars](https://img.shields.io/github/stars/fatedier/frp?style=social&color=white)](https://github.com/fatedier/frp/stargazers) | Apache-2.0 | A high-performance reverse proxy for exposing local servers behind NAT or firewalls to the internet via secure tunnels. |
+| **[Headscale](https://github.com/juanfont/headscale)** | [![Headscale Stars](https://img.shields.io/github/stars/juanfont/headscale?style=social&color=white)](https://github.com/juanfont/headscale/stargazers) | BSD-3-Clause | Open-source self-hosted implementation of the Tailscale control server. Allows using official Tailscale clients without vendor lock-in. |
+| **[NetBird](https://github.com/netbirdio/netbird)** | [![NetBird Stars](https://img.shields.io/github/stars/netbirdio/netbird?style=social&color=white)](https://github.com/netbirdio/netbird/stargazers) | BSD-3-Clause | Zero-trust WireGuard mesh VPN with integrated SSO/IdP authentication, self-hosted management dashboard, and automated peer routing. |
+| **[Nebula](https://github.com/slackhq/nebula)** | [![Nebula Stars](https://img.shields.io/github/stars/slackhq/nebula?style=social&color=white)](https://github.com/slackhq/nebula/stargazers) | MIT | Portable overlay networking tool created by Slack focused on performance, security, and scalability across multi-cloud clusters. |
+| **[Pritunl Server](https://github.com/pritunl/pritunl)** | [![Pritunl Stars](https://img.shields.io/github/stars/pritunl/pritunl?style=social&color=white)](https://github.com/pritunl/pritunl/stargazers) | Enterprise/GPLv3 | Distributed OpenVPN and WireGuard server software with intuitive web management dashboard and multi-tenant support. |
+| **[rathole](https://github.com/rapiz1/rathole)** | [![rathole Stars](https://img.shields.io/github/stars/rapiz1/rathole?style=social&color=white)](https://github.com/rapiz1/rathole/stargazers) | Apache-2.0 | Lightweight, high-performance reverse proxy for NAT traversal written in Rust. Fast alternative to frp and ngrok. |
+| **[Nmap](https://github.com/nmap/nmap)** | [![Nmap Stars](https://img.shields.io/github/stars/nmap/nmap?style=social&color=white)](https://github.com/nmap/nmap/stargazers) | Nmap Public Source | Network discovery and security auditing utility essential for VPC network topology mapping and vulnerability scanning. |
+| **[Netmaker](https://github.com/gravitl/netmaker)** | [![Netmaker Stars](https://img.shields.io/github/stars/gravitl/netmaker?style=social&color=white)](https://github.com/gravitl/netmaker/stargazers) | SSPL-1.0 | Fast open-source WireGuard mesh networking platform utilizing Linux kernel WireGuard for flat overlay VPC connectivity across clouds. |
+| **[LXD](https://github.com/lxc/lxd)** | [![LXD Stars](https://img.shields.io/github/stars/lxc/lxd?style=social&color=white)](https://github.com/lxc/lxd/stargazers) | AGPL-3.0 | Container and VM management daemon providing virtual network bridges, OVN software-defined networking, and private cloud VPC isolation. |
+| **[Incus](https://github.com/lxc/incus)** | [![Incus Stars](https://img.shields.io/github/stars/lxc/incus?style=social&color=white)](https://github.com/lxc/incus/stargazers) | Apache-2.0 | Community fork of LXD for system container & VM orchestration with full OVN SDN multi-tenant network isolation. |
+| **[innernet](https://github.com/tonarino/innernet)** | [![innernet Stars](https://img.shields.io/github/stars/tonarino/innernet?style=social&color=white)](https://github.com/tonarino/innernet/stargazers) | MIT | A private network system created by Tonari that builds internal WireGuard networks with CIDR-based authorization rules. |
+| **[Open vSwitch (OVS)](https://github.com/openvswitch/ovs)** | [![OVS Stars](https://img.shields.io/github/stars/openvswitch/ovs?style=social&color=white)](https://github.com/openvswitch/ovs/stargazers) | Apache-2.0 | Production-quality multilayer virtual switch used as the core SDN engine in OpenStack, Kubernetes CNI, and enterprise cloud networks. |
+| **[WireGuard Tools](https://github.com/WireGuard/wireguard-tools)** | [![WireGuard Tools Stars](https://img.shields.io/github/stars/WireGuard/wireguard-tools?style=social&color=white)](https://github.com/WireGuard/wireguard-tools/stargazers) | GPL-2.0 | Command-line tools (`wg`, `wg-quick`) for configuring WireGuard encrypted tunnel interfaces. |
+| **[Pritunl Zero](https://github.com/pritunl/pritunl-zero)** | [![Pritunl Zero Stars](https://img.shields.io/github/stars/pritunl/pritunl-zero?style=social&color=white)](https://github.com/pritunl/pritunl-zero/stargazers) | AGPL-3.0 | Open-source BeyondCorp zero-trust proxy server for securing SSH and web applications without traditional client VPNs. |
+| **[Superphenix](https://github.com/super-phenix/superphenix)** | [![Superphenix Stars](https://img.shields.io/github/stars/super-phenix/superphenix?style=social&color=white)](https://github.com/super-phenix/superphenix/stargazers) | Apache-2.0 | Open-source Kubernetes-native cloud platform providing VPCs, NAT gateways, BGP routing, and security groups. |
+| **[Paraglider](https://github.com/paraglider-project/paraglider)** | [![Paraglider Stars](https://img.shields.io/github/stars/paraglider-project/paraglider?style=social&color=white)](https://github.com/paraglider-project/paraglider/stargazers) | Apache-2.0 | Linux Foundation project creating a unified declarative multi-cloud control plane for VPC network management across AWS, Azure, and GCP. |
+| **[Karadul](https://github.com/ersinkoc/karadul)** | [![Karadul Stars](https://img.shields.io/github/stars/ersinkoc/karadul?style=social&color=white)](https://github.com/ersinkoc/karadul/stargazers) | MIT | Zero-dependency, single-binary mesh VPN in Go (Tailscale + Headscale in one binary) with MagicDNS and Noise protocol encryption. |
+| **[Ferrumgate](https://github.com/ferrumgate/secure.install)** | [![Ferrumgate Stars](https://img.shields.io/github/stars/ferrumgate/secure.install?style=social&color=white)](https://github.com/ferrumgate/secure.install/stargazers) | GPL-3.0 | Open-source Zero Trust Network Access (ZTNA) platform using software-defined perimeters to protect private cloud services. |
+| **[Shurli](https://github.com/shurlinet/shurli)** | [![Shurli Stars](https://img.shields.io/github/stars/shurlinet/shurli?style=social&color=white)](https://github.com/shurlinet/shurli/stargazers) | MIT | Self-hosted relay and WireGuard mesh for NAT traversal with invite-code onboarding and built-in TCP proxying. |
+
+---
+
+## Architecture Comparison & Selection Framework
+
+When choosing between cloud VPC providers and mesh VPN tools, consider your operational capacity and requirements:
+
+- **Public Cloud Native VPCs (AWS, Azure, GCP)**: Best for infrastructure hosted within a single cloud provider requiring deep integration with native load balancers, IAM, and managed databases.
+- **Managed WireGuard Mesh VPNs (Tailscale, NetBird)**: Best for remote user access, multi-cloud interconnectivity, and developer access without setting up complex gateway servers.
+- **Self-Hosted Control Planes (Headscale, Netmaker, Karadul)**: Ideal for privacy-conscious organizations requiring zero third-party metadata access and complete data sovereignty.
+- **Private Cloud Infrastructure SDN (LXD, Incus, Open vSwitch)**: Best for on-premises bare-metal clouds, homelabs, and hypervisor-level container/VM network segmentation.
+
+---
+
+## How to Contribute
+
+1. Fork this repository.
+2. Add or update entries in `README.md` following the exact table structure.
+3. Ensure links, pricing, company sizing, and star count badges are verified and updated.
+4. Submit a Pull Request with a short summary of changes.
+
+---
+
+## Disclaimer
+
+- This list is **community-curated** for informational purposes and does not imply official endorsement.
+- Ensure proper key rotation, ACL security policy audits, and backup procedures when operating self-hosted coordination controllers.
+
+---
+
+**Maintained by network engineers, DevOps practitioners, and cloud architects.**
