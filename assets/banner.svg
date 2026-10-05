@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <!-- Mesh Wireframe Glow -->
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+
+    <!-- Glowing Node Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="360" fill="url(#bgGradient)" rx="16"/>
+  <rect width="1200" height="360" fill="url(#grid)" rx="16"/>
+
+  <!-- Dynamic / Animated Background Mesh Networks (Positioned behind text) -->
+  <g opacity="0.35">
+    <!-- Animated Network Lines -->
+    <path d="M 100,280 L 250,180 L 450,260 L 650,140 L 900,280 L 1100,160" fill="none" stroke="url(#cyanGlow)" stroke-width="2" stroke-dasharray="8 6">
+      <animate attributeName="stroke-dashoffset" from="100" to="0" dur="15s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 150,80 L 350,160 L 600,60 L 850,180 L 1050,70" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6">
+      <animate attributeName="stroke-dashoffset" from="0" to="100" dur="20s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Pulse Node Circles -->
+    <circle cx="250" cy="180" r="6" fill="#06b6d4" filter="url(#glow)">
+      <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="260" r="5" fill="#3b82f6" filter="url(#glow)">
+      <animate attributeName="r" values="3;7;3" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="140" r="7" fill="#8b5cf6" filter="url(#glow)">
+      <animate attributeName="r" values="5;9;5" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="280" r="6" fill="#ec4899" filter="url(#glow)">
+      <animate attributeName="r" values="4;8;4" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Foreground Overlay Card (Ensures absolute legibility of text) -->
+  <rect x="80" y="45" width="1040" height="270" rx="12" fill="#0f172a" fill-opacity="0.75" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Top Decorative Tag -->
+  <g transform="translate(110, 80)">
+    <rect x="0" y="0" width="210" height="28" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="15" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#60a5fa" letter-spacing="1">
+      ⚡ ZERO-TRUST &amp; MESH VPN
+    </text>
+  </g>
+
+  <!-- Title -->
+  <text x="110" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" fill="#ffffff" letter-spacing="-0.5">
+    Awesome Virtual Private Cloud Networking
+  </text>
+
+  <!-- Subtitle -->
+  <text x="110" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="400" fill="#94a3b8">
+    Curated ecosystem of VPC Platforms, Overlay Networks, WireGuard Mesh &amp; SDN Solutions
+  </text>
+
+  <!-- Feature Pills in Banner Foreground -->
+  <g transform="translate(110, 230)">
+    <!-- Pill 1 -->
+    <rect x="0" y="0" width="140" height="32" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+    <text x="15" y="21" font-family="sans-serif" font-size="13" font-weight="600" fill="#a5b4fc">🔒 Zero-Trust ZTNA</text>
+
+    <!-- Pill 2 -->
+    <rect x="152" y="0" width="150" height="32" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="167" y="21" font-family="sans-serif" font-size="13" font-weight="600" fill="#6ee7b7">⚡ WireGuard Mesh</text>
+
+    <!-- Pill 3 -->
+    <rect x="314" y="0" width="150" height="32" rx="8" fill="#4c1d95" stroke="#a855f7" stroke-width="1"/>
+    <text x="329" y="21" font-family="sans-serif" font-size="13" font-weight="600" fill="#d8b4fe">🌐 Multi-Cloud SDN</text>
+
+    <!-- Pill 4 -->
+    <rect x="476" y="0" width="140" height="32" rx="8" fill="#0f4c5c" stroke="#06b6d4" stroke-width="1"/>
+    <text x="491" y="21" font-family="sans-serif" font-size="13" font-weight="600" fill="#67e8f9">🛠️ Self-Hosted</text>
+  </g>
+</svg>
