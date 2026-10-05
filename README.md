@@ -53,9 +53,9 @@ The table below lists top commercial SaaS & managed VPC networking solutions, ra
 
 ## 🛠️ Open-Source GitHub Projects
 
-The top open-source VPC networking, mesh VPN, and overlay infrastructure repositories, sorted by **GitHub Star Count (descending)**:
+The top open-source VPC networking, mesh VPN, and overlay infrastructure repositories, sorted by **GitHub Stars_Count (descending)**:
 
-| Project | GitHub Stars | License | Description |
+| Project | GitHub_Stars | License | Description |
 | :--- | :--- | :--- | :--- |
 | **[frp](https://github.com/fatedier/frp)** | [![frp Stars](https://img.shields.io/github/stars/fatedier/frp?style=social&color=white)](https://github.com/fatedier/frp/stargazers) | Apache-2.0 | ⚡ A high-performance reverse proxy for exposing local servers behind NAT or firewalls to the internet via secure tunnels. |
 | **[Headscale](https://github.com/juanfont/headscale)** | [![Headscale Stars](https://img.shields.io/github/stars/juanfont/headscale?style=social&color=white)](https://github.com/juanfont/headscale/stargazers) | BSD-3-Clause | 🔓 Open-source self-hosted implementation of the Tailscale control server. Allows using official Tailscale clients without vendor lock-in. |
@@ -94,7 +94,7 @@ When choosing between cloud VPC providers and mesh VPN tools, consider your oper
 
 1. 🍴 Fork this repository.
 2. 📝 Add or update entries in `README.md` following the exact table structure.
-3. 🔎 Ensure links, pricing, company sizing, and star count badges are verified and updated.
+3. 🔎 Ensure links, pricing, company sizing, and Stars_Count badges are verified and updated.
 4. 🚀 Submit a Pull Request with a short summary of changes.
 
 ---
